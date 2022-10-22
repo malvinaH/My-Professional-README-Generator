@@ -2,17 +2,8 @@
 // Packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./assets/js/generate-markdown.js');
 
 // FUNCTIONS
-
-// Function to write README file
-// create README.md file with the generated markdown in it
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-      err ? console.error(err) : console.log('Markdown file generated!');
-    });
-  }
 
 // USER INTERACTION AND DATA
 // Array of questions for user input
@@ -129,11 +120,10 @@ const init = () => {
                     }
                 }
             }
-        ]).then(answers => {
-        readAnswers = generateMarkdown(answers);
-        writeToFile('README.md', readAnswers)
-          })
-        }
+        ]).then(response => {
+
+    })
+    }
 
 
 
