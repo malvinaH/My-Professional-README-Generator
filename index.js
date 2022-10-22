@@ -2,11 +2,17 @@
 // Packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./assets/js/generate-markdown.js');
 
 // FUNCTIONS
 
 // Function to write README file
-
+// create README.md file with the generated markdown in it
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+      err ? console.error(err) : console.log('Markdown file generated!');
+    });
+  }
 
 // USER INTERACTION AND DATA
 // Array of questions for user input
@@ -16,7 +22,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'title',
-                message: "What is your project's title? (Required)",
+                message: "What is your project's title?",
                 validate: titleInput => {
                     if (titleInput) {
                         return true;
@@ -29,7 +35,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'github',
-                message: 'What is your GitHub Username? (Required)',
+                message: 'What is your GitHub Username?',
                 validate: githubInput => {
                     if (githubInput) {
                         return true;
@@ -42,7 +48,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is your email address? (Required)',
+                message: 'What is your email address?',
                 validate: githubInput => {
                     if (githubInput) {
                         return true;
@@ -55,7 +61,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'description',
-                message: 'Please write a short description of your project. (Required)',
+                message: 'Please write a short description of your project.',
                 validate: descriptionInput => {
                     if (descriptionInput) {
                         return true;
@@ -67,47 +73,8 @@ const init = () => {
             },
             {
                 type: 'input',
-                name: 'purpose',
-                message: 'Why did you build this project/What problem does it solve? (Required)',
-                validate: purposeInput => {
-                    if (purposeInput) {
-                        return true;
-                    } else {
-                        console.log('Please enter why did you build this app!');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'input',
-                name: 'standout',
-                message: 'What makes your project stand out? (Required)',
-                validate: standoutInput => {
-                    if (standoutInput) {
-                        return true;
-                    } else {
-                        console.log('Please enter what makes your project stand out!');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'input',
-                name: 'learn',
-                message: 'What did you learn? (Required)',
-                validate: whatInput => {
-                    if (whatInput) {
-                        return true;
-                    } else {
-                        console.log('Please enter what did you learn!');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'input',
-                name: 'installation',
-                message: 'Please provide step-by-step installation instructions on how to get your project running. (Required)',
+                name: 'install',
+                message: 'Please provide step-by-step installation instructions on how to get your project running.',
                 validate: installInput => {
                     if (installInput) {
                         return true;
@@ -120,7 +87,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'usage',
-                message: 'Please provide instructions and examples for use including screenshots if needed. (Required)',
+                message: 'Please provide instructions and examples for use including screenshots if needed.',
                 validate: usageInput => {
                     if (usageInput) {
                         return true;
@@ -134,25 +101,12 @@ const init = () => {
                 type: 'list',
                 name: 'license',
                 message: 'Which license will you use for your project?',
-                choices: ['GPL 3.0', 'APACHE 2.0', 'MIT', 'BSD 3', 'None']
-            },
-            {
-                type: 'confirm',
-                name: 'confirmContributers',
-                message: 'Would you like to allow other developers to contribute?',
-                default: true
+                choices: ['APACHE 2.0', 'MIT', 'BSD 3', 'None']
             },
             {
                 type: 'input',
                 name: 'contribute',
-                message: 'Please provide guidelines for contributing. (Required)',
-                when: ({ guidelinesContributers }) => {
-                    if (guidelinesContributers) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },
+                message: 'Please provide guidelines for contributing.',
                 validate: contributerInput => {
                     if (contributerInput) {
                         return true;
@@ -165,7 +119,7 @@ const init = () => {
             {
                 type: 'input',
                 name: 'tests',
-                message: 'Please provide instructions on how to test the app. (Required)',
+                message: 'Please provide instructions on how to test the app.',
                 validate: testInput => {
                     if (testInput) {
                         return true;
@@ -175,7 +129,9 @@ const init = () => {
                     }
                 }
             }
-        ]).then(response => {
+        ]).then(answers => {
+        readAnswers = generateMarkdown(answers);
+        writeToFile('README.md', readAnswers)
           })
         }
 
