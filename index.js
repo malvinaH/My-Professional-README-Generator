@@ -7,6 +7,13 @@ const generateMarkdown = require('./assets/js/generate-markdown.js');
 
 // FUNCTIONS
 
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+      err ? console.error(err) : console.log('Markdown file generated!');
+    });
+  }
+
+
 // USER INTERACTION AND DATA
 // Array of questions for user input
 const init = () => {
@@ -122,9 +129,10 @@ const init = () => {
                     }
                 }
             }
-        ]).then(response => {
-
-    })
+        ]).then(answers => {
+            readAnswers = generateMarkdown(answers);
+            writeToFile('README.md', readAnswers)
+      })
     }
 
 
