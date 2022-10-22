@@ -11,7 +11,6 @@ function renderLicenseBadge(license) {
     }
   }
 
-
 // get license section content for license
 function renderLicenseSection(license) {
     if (license === 'none') {
@@ -75,6 +74,7 @@ function generateMarkdown(
     ${tests}
 
   ## Questions
+
   If you have any questions about the repo, open an issue or contact directly at ${email}. You can find more of my work at https://github.com/${github}.
   `;
   }
