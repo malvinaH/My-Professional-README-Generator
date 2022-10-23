@@ -1,4 +1,4 @@
-# README.md file generator
+# README.md file generator - Malvina Hasa
 
 ![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg "MIT badge")
 
