@@ -15,7 +15,7 @@ This project generates README.md file.
 - [Tests](#tests)
 - [Questions](#questions)
 
-  ## Installation
+## Installation
 
 clone this repo on your terminal and run npm i for all the necessary packages.
 
@@ -38,4 +38,3 @@ To test the app you can run node index and change asnswers to the prompts.
   ## Questions
 
 If you have any questions about the repo, open an issue or contact directly at hasamalvina24@gmail.com. You can find more of my work at https://github.com/malvinaH.
-  
