@@ -15,13 +15,13 @@ This project generates README.md file.
 - [Tests](#tests)
 - [Questions](#questions)
 
-## Installation
+  ## Installation
 
-clone this repo on your terminal and run npm i for all the necessary packages.
+Clone this repo on your terminal and run npm i for all the necessary packages.
 
   ## Usage
 
-run node index.js or node index and answer all the questions asked on the prompts.
+Run node index.js or node index and answer the questions asked on the prompts.
 
   ## License
 
@@ -33,7 +33,9 @@ If you would like to contribute please fork the repo for all the suggestions.
 
   ## Tests
 
-To test the app you can run node index and change asnswers to the prompts.
+To test the app you can run node index and change answers to the prompt. Please see attached Walkthrough video for more insight :
+
+https://drive.google.com/file/d/1rCGUfX8LcfUeQFb9Yjg8YP7dBb3Tq9uv/view
 
   ## Questions
 
